@@ -32,18 +32,6 @@ namespace Glader.ASP.ServiceDiscovery
 
 		}
 
-		//We do the below for local database creation stuff
-#if DATABASE_MIGRATION
-		/// <inheritdoc />
-		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{
-			//TODO: Should I have local or also AWS setup here?
-			optionsBuilder.UseMySql("Server=127.0.0.1;Database=guardians.global;Uid=root;Pwd=test;");
-
-			base.OnConfiguring(optionsBuilder);
-		}
-#endif
-
 		/// <inheritdoc />
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
