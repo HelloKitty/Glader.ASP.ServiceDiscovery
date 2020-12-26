@@ -20,7 +20,7 @@ namespace Glader.ASP.ServiceDiscovery
 		/// </summary>
 		/// <param name="request">The request.</param>
 		/// <returns>The result of the resolve request.</returns>
-		[Post("/api/ServiceDiscovery/Discover")]
+		[Get("/api/ServiceDiscovery/Discover")]
 		Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync([Body(BodySerializationMethod.Serialized)] ResolvedServiceEndpointRequest request);
 	}
 }

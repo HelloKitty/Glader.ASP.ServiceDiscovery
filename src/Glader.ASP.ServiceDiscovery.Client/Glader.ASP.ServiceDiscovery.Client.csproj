@@ -2,10 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>Glader.ASP.ServiceDiscovery</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Glader.Essentials.Models" Version="2.2.42" />
     <PackageReference Include="Refit" Version="5.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Glader.ASP.ServiceDiscovery.Models\Glader.ASP.ServiceDiscovery.Models.csproj" />
   </ItemGroup>
 
 </Project>

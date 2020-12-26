@@ -6,7 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Glader.Essentials.Database" Version="2.2.42" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Glader.ASP.ServiceDiscovery.Models\Glader.ASP.ServiceDiscovery.Models.csproj" />
   </ItemGroup>
 
 </Project>
