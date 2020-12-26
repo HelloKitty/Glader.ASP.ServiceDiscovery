@@ -18,9 +18,9 @@ namespace Glader.ASP.ServiceDiscovery
 		/// Attempts to discover a service with the provided <see cref="request"/>
 		/// model.
 		/// </summary>
-		/// <param name="request">The request.</param>
+		/// <param name="serviceName">The name of the service.</param>
 		/// <returns>The result of the resolve request.</returns>
-		[Get("/api/ServiceDiscovery/Discover")]
-		Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync([Body(BodySerializationMethod.Serialized)] ResolvedServiceEndpointRequest request);
+		[Get("/api/ServiceDiscovery/{name}/Discover")]
+		Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync([AliasAs("name")] string serviceName);
 	}
 }

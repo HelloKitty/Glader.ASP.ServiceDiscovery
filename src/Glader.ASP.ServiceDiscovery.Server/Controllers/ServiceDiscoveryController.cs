@@ -8,7 +8,7 @@ using Glader.Essentials;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace GladMMO
+namespace Glader.ASP.ServiceDiscovery
 {
 	/// <summary>
 	/// The service discovery controller.
@@ -33,8 +33,8 @@ namespace GladMMO
 			LoggingService = loggingService;
 		}
 
-		[HttpGet(nameof(Discover))]
-		public async Task<JsonResult> Discover([FromQuery] string serviceName)
+		[HttpGet("{name}/" + nameof(Discover))]
+		public async Task<JsonResult> Discover([FromRoute(Name = "name")] string serviceName)
 		{
 			if(LoggingService.IsEnabled(LogLevel.Debug))
 				LoggingService.LogDebug($"Service Discover request for: {serviceName}");
@@ -63,15 +63,6 @@ namespace GladMMO
 			ServiceEndpointModel endpoint = await EndpointRepository.RetrieveAsync(serviceName);
 
 			return Json(new ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>(endpoint.Endpoint));
-		}
-
-		[HttpGet(nameof(Discover))]
-		public async Task<JsonResult> Discover([FromBody] ResolvedServiceEndpointRequest request)
-		{
-			if(LoggingService.IsEnabled(LogLevel.Debug))
-				LoggingService.LogDebug($"Service Discover request for: {request.ServiceType}");
-
-			return await Discover(request.ServiceType);
 		}
 	}
 }
