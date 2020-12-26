@@ -22,7 +22,6 @@ namespace Glader.ASP.ServiceDiscovery
 			Context = context ?? throw new ArgumentNullException(nameof(context));
 		}
 
-
 		/// <inheritdoc />
 		public async Task<bool> ContainsAsync(string key, CancellationToken token = default)
 		{

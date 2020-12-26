@@ -67,6 +67,12 @@ namespace Glader.ASP.ServiceDiscovery
 		private static void SetupServiceEndpointEntryModel(ModelBuilder modelBuilder)
 		{
 			if (modelBuilder == null) throw new ArgumentNullException(nameof(modelBuilder));
+
+			EntityTypeBuilder<ServiceEndpointModel> serviceEndpointEntity = modelBuilder.Entity<ServiceEndpointModel>();
+
+			//Owns an endpoint.
+			serviceEndpointEntity
+				.OwnsOne(e => e.Endpoint);
 		}
 	}
 }

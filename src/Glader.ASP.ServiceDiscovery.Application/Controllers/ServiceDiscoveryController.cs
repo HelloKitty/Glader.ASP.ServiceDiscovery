@@ -47,51 +47,31 @@ namespace GladMMO
 				Json(new ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>(ResolvedServiceEndpointResponseCode.GeneralRequestError));
 			}
 
-			return Json(new ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>(ResolvedServiceEndpointResponseCode.ServiceUnavailable));
-		}
-
-		//TODO: Why post? Wrote this so long ago, cannot remember.
-		/*[HttpPost(nameof(Discover))]
-		public async Task<ResolveServiceEndpointResponse> Discover([FromBody] ResolveServiceEndpointRequest requestModel)
-		{
-			if(LoggingService.IsEnabled(LogLevel.Debug))
-				LoggingService.LogDebug($"Service Discover request for: {requestModel.Region}:{requestModel.ServiceType}");
-
-			if (!ModelState.IsValid)
-			{
-				if (LoggingService.IsEnabled(LogLevel.Debug))
-					LoggingService.LogDebug($"Resolution request was sent with an invalid model ModelState.");
-
-				return new ResolveServiceEndpointResponse(ResolveServiceEndpointResponseCode.GeneralRequestError);
-			}
-
-			ServiceEndpointKey endpointKey = new ServiceEndpointKey(requestModel.ServiceType, requestModel.Region, DeploymentMode.Internal);
-
 			//We need to check if we know about the locale
 			//If we don't we should indicate it is unlisted
 			//We also need to check if the keypair region and servicetype exist
 			//TODO: Deployment mode handling, right now it's set to INTERNAL
-			if (!await EndpointRepository.ContainsAsync(endpointKey))
+			if(!await EndpointRepository.ContainsAsync(serviceName))
 			{
 				if(LoggingService.IsEnabled(LogLevel.Debug))
-					LoggingService.LogDebug($"Client requested unlisted service Region: {requestModel.Region} Service: {requestModel.ServiceType}.");
+					LoggingService.LogDebug($"Client requested unlisted service Service: {serviceName}.");
 
-				return new ResolveServiceEndpointResponse(ResolveServiceEndpointResponseCode.ServiceUnlisted);
+				return Json(new ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>(ResolvedServiceEndpointResponseCode.ServiceUnlisted));
 			}
 
-			ServiceEndpointModel endpoint = await EndpointRepository.RetrieveAsync(endpointKey);
+			//Assume no failure
+			ServiceEndpointModel endpoint = await EndpointRepository.RetrieveAsync(serviceName);
 
-			if (endpoint == null)
-			{
-				//Log the error. It shouldn't be null if the checks passed
-				if (LoggingService.IsEnabled(LogLevel.Error))
-					LoggingService.LogError($"Resolution request {requestModel.ServiceType} for region {requestModel.Region} failed even through it was a known pair.");
+			return Json(new ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>(endpoint.Endpoint));
+		}
 
-				return new ResolveServiceEndpointResponse(ResolveServiceEndpointResponseCode.GeneralRequestError);
-			}
+		[HttpGet(nameof(Discover))]
+		public async Task<JsonResult> Discover([FromBody] ResolvedServiceEndpointRequest request)
+		{
+			if(LoggingService.IsEnabled(LogLevel.Debug))
+				LoggingService.LogDebug($"Service Discover request for: {request.ServiceType}");
 
-			//Just return the JSON model response to the client
-			return new ResolveServiceEndpointResponse(endpoint.Endpoint);
-		}*/
+			return await Discover(request.ServiceType);
+		}
 	}
 }
