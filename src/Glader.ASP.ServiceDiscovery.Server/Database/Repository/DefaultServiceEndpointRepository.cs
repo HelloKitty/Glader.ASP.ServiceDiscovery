@@ -43,6 +43,10 @@ namespace Glader.ASP.ServiceDiscovery
 		/// <inheritdoc />
 		public async Task<ServiceEndpointModel> RetrieveAsync(string key, CancellationToken token = default, bool includeNavigationProperties = false)
 		{
+			key = ServiceNameNormalizedBuilder
+				.Create(key)
+				.ToString();
+
 			return await Context.ServiceEndpoints.FirstAsync(e => e.Service.ServiceName == key, token);
 		}
 
