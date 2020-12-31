@@ -15,7 +15,7 @@ namespace Glader.ASP.ServiceDiscovery
 	public interface IServiceDiscoveryService
 	{
 		/// <summary>
-		/// Attempts to discover a service with the provided <see cref="request"/>
+		/// Attempts to discover a service with the provided <see cref="serviceName"/>
 		/// model.
 		/// </summary>
 		/// <param name="serviceName">The name of the service.</param>
