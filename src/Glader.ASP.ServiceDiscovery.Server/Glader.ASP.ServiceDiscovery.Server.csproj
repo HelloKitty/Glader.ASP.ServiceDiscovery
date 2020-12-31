@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Glader.ASP.ServiceDiscovery.Client\Glader.ASP.ServiceDiscovery.Client.csproj" />
     <ProjectReference Include="..\Glader.ASP.ServiceDiscovery.Models\Glader.ASP.ServiceDiscovery.Models.csproj" />
   </ItemGroup>
 
