@@ -9,7 +9,7 @@ namespace Glader.ASP.ServiceDiscovery
 	/// Represents a response model to a full service resolution request.
 	/// </summary>
 	[JsonObject]
-	public sealed class ServiceResolutionResponse
+	public sealed class ServiceResolutionResult
 	{
 		/// <summary>
 		/// Internal-serialized <see cref="Services"/>
@@ -25,20 +25,20 @@ namespace Glader.ASP.ServiceDiscovery
 		public IEnumerable<ResolvedService> Services => _Services;
 
 		/// <summary>
-		/// Creates a resolution response with the specified <see cref="Services"/>
+		/// Creates a resolution result with the specified <see cref="Services"/>
 		/// </summary>
 		/// <param name="services">The resolved services.</param>
-		public ServiceResolutionResponse(ResolvedService[] services)
+		public ServiceResolutionResult(ResolvedService[] services)
 		{
 			_Services = services ?? throw new ArgumentNullException(nameof(services));
 		}
 
 		/// <summary>
-		/// Creates an empty resolution response.
+		/// Creates an empty resolution result.
 		/// <see cref="Services"/> will be non-null but empty.
 		/// </summary>
 		[JsonConstructor]
-		public ServiceResolutionResponse()
+		public ServiceResolutionResult()
 		{
 			
 		}
