@@ -15,12 +15,21 @@ namespace Glader.ASP.ServiceDiscovery
 	public interface IServiceDiscoveryService
 	{
 		/// <summary>
-		/// Attempts to discover a service with the provided <see cref="serviceName"/>
+		/// Attempts to discover a service with the provided <see cref="serviceType"/>
 		/// model.
 		/// </summary>
-		/// <param name="serviceName">The name of the service.</param>
+		/// <param name="serviceType">The type of the service.</param>
 		/// <returns>The result of the resolve request.</returns>
-		[Get("/api/ServiceDiscovery/{name}/Discover")]
-		Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync([AliasAs("name")] string serviceName);
+		[Get("/api/ServiceDiscovery/{name}/Single")]
+		Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync([AliasAs("name")] string serviceType);
+
+		/// <summary>
+		/// Attempts to discover all services of a specified <see cref="serviceType"/>
+		/// model.
+		/// </summary>
+		/// <param name="serviceType">The type of the service.</param>
+		/// <returns>The result a result of all services resolved.</returns>
+		[Get("/api/ServiceDiscovery/{name}")]
+		Task<ResponseModel<ServiceResolutionResult, ResolvedServiceEndpointResponseCode>> DiscoverServicesAsync([AliasAs("name")] string serviceType);
 	}
 }
