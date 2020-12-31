@@ -20,6 +20,7 @@ namespace Glader.ASP.ServiceDiscovery
 		/// <summary>
 		/// Represents the name of the service.
 		/// </summary>
+		[Required]
 		public string ServiceName { get; internal set; }
 
 		public ServiceEntryModel(int serviceId, string serviceName)

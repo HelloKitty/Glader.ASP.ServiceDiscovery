@@ -14,7 +14,6 @@ namespace Glader.ASP.ServiceDiscovery
 		/// <summary>
 		/// Identifier of the service endpoint entry.
 		/// </summary>
-		[Required]
 		public int ServiceId { get; internal set; }
 
 		/// <summary>
@@ -34,7 +33,6 @@ namespace Glader.ASP.ServiceDiscovery
 		/// <summary>
 		/// The endpoint address for the service.
 		/// </summary>
-		[Required]
 		public ResolvedEndpoint Endpoint { get; internal set; }
 
 		public ServiceEndpointModel(int serviceId, string name, ResolvedEndpoint endpoint)

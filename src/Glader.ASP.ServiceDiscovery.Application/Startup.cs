@@ -38,7 +38,13 @@ namespace GladMMO
 			services.AddLogging();
 
 			//DefaultServiceEndpointRepository : IServiceEndpointRepository
-			services.RegisterServiceDiscoveryDatabase(builder => { builder.UseMySql("server=127.0.0.1;port=3306;Database=guardians.global;Uid=root;Pwd=test;"); });
+			services.RegisterServiceDiscoveryDatabase(builder =>
+			{
+				builder.UseMySql("server=127.0.0.1;port=3306;Database=glader.test;Uid=root;Pwd=test;", optionsBuilder =>
+				{
+					optionsBuilder.MigrationsAssembly(GetType().Assembly.FullName);
+				});
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
