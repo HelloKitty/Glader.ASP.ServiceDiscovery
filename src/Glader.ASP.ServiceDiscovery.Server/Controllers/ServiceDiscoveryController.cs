@@ -34,7 +34,7 @@ namespace Glader.ASP.ServiceDiscovery
 
 		[ProducesJson]
 		[HttpGet("{name}/Single")]
-		public async Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync(string serviceType, CancellationToken token = default)
+		public async Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync([FromRoute(Name = "name")] string serviceType, CancellationToken token = default)
 		{
 			if(LoggingService.IsEnabled(LogLevel.Debug))
 				LoggingService.LogDebug($"Service Discover request for: {serviceType}");
@@ -67,7 +67,7 @@ namespace Glader.ASP.ServiceDiscovery
 
 		[ProducesJson]
 		[HttpGet("{name}")]
-		public async Task<ResponseModel<ServiceResolutionResult, ResolvedServiceEndpointResponseCode>> DiscoverServicesAsync(string serviceType, CancellationToken token = default)
+		public async Task<ResponseModel<ServiceResolutionResult, ResolvedServiceEndpointResponseCode>> DiscoverServicesAsync([FromRoute(Name = "name")] string serviceType, CancellationToken token = default)
 		{
 			if(LoggingService.IsEnabled(LogLevel.Debug))
 				LoggingService.LogDebug($"Service Discover request for: {serviceType}");
