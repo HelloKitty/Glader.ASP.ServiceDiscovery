@@ -16,7 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Glader.Essentials.Models" Version="2.2.42" />
+    <PackageReference Include="Glader.Essentials.Models" Version="2.2.48" />
     <PackageReference Include="Refit" Version="5.2.4" />
   </ItemGroup>
 
