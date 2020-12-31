@@ -2,14 +2,16 @@
 using Glader.ASP.ServiceDiscovery;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Glader.ASP.ServiceDiscovery.Migrations
 {
     [DbContext(typeof(ServiceDiscoveryDatabaseContext))]
-    partial class ServiceDiscoveryDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20201231061602_ChangedServiceEntryModelToServiceType")]
+    partial class ChangedServiceEntryModelToServiceType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

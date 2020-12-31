@@ -49,7 +49,7 @@ namespace Glader.ASP.ServiceDiscovery
 
 			//Makes the name a unique entry.
 			serviceEntity
-				.HasAlternateKey(s => s.ServiceName);
+				.HasAlternateKey(s => s.ServiceType);
 		}
 
 		private static void SetupServiceEndpointEntryModel(ModelBuilder modelBuilder)

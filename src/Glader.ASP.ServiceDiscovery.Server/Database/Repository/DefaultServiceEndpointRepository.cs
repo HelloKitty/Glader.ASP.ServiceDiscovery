@@ -31,7 +31,7 @@ namespace Glader.ASP.ServiceDiscovery
 				.ToString();
 
 			//Check if any match the name.
-			return await Context.ServiceEndpoints.AnyAsync(e => e.Service.ServiceName == key, token);
+			return await Context.ServiceEndpoints.AnyAsync(e => e.Service.ServiceType == key, token);
 		}
 
 		/// <inheritdoc />
@@ -48,7 +48,7 @@ namespace Glader.ASP.ServiceDiscovery
 				.Create(key)
 				.ToString();
 
-			return await Context.ServiceEndpoints.FirstAsync(e => e.Service.ServiceName == key, token);
+			return await Context.ServiceEndpoints.FirstAsync(e => e.Service.ServiceType == key, token);
 		}
 
 		/// <inheritdoc />
@@ -74,7 +74,7 @@ namespace Glader.ASP.ServiceDiscovery
 
 			//All services with the service type.
 			return await Context.ServiceEndpoints
-				.Where(e => e.Service.ServiceName == key)
+				.Where(e => e.Service.ServiceType == key)
 				.ToArrayAsync(token);
 		}
 	}

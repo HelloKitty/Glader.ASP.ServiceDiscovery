@@ -18,17 +18,17 @@ namespace Glader.ASP.ServiceDiscovery
 		public int ServiceId { get; internal set; }
 
 		/// <summary>
-		/// Represents the name of the service.
+		/// Represents the Type of the service.
 		/// </summary>
 		[Required]
-		public string ServiceName { get; internal set; }
+		public string ServiceType { get; internal set; }
 
-		public ServiceEntryModel(int serviceId, string serviceName)
+		public ServiceEntryModel(int serviceId, string serviceType)
 		{
-			if(string.IsNullOrEmpty(serviceName)) throw new ArgumentException("Value cannot be null or empty.", nameof(serviceName));
+			if(string.IsNullOrEmpty(serviceType)) throw new ArgumentException("Value cannot be null or empty.", nameof(serviceType));
 
 			ServiceId = serviceId;
-			ServiceName = serviceName.ToUpper();
+			ServiceType = serviceType.ToUpper();
 		}
 
 		/// <summary>
