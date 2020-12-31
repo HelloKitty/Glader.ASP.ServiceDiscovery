@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Glader.Essentials;
 using Refit;
@@ -19,17 +20,19 @@ namespace Glader.ASP.ServiceDiscovery
 		/// model.
 		/// </summary>
 		/// <param name="serviceType">The type of the service.</param>
+		/// <param name="token"></param>
 		/// <returns>The result of the resolve request.</returns>
 		[Get("/api/ServiceDiscovery/{name}/Single")]
-		Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync([AliasAs("name")] string serviceType);
+		Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync([AliasAs("name")] string serviceType, CancellationToken token = default);
 
 		/// <summary>
 		/// Attempts to discover all services of a specified <see cref="serviceType"/>
 		/// model.
 		/// </summary>
 		/// <param name="serviceType">The type of the service.</param>
+		/// <param name="token"></param>
 		/// <returns>The result a result of all services resolved.</returns>
 		[Get("/api/ServiceDiscovery/{name}")]
-		Task<ResponseModel<ServiceResolutionResult, ResolvedServiceEndpointResponseCode>> DiscoverServicesAsync([AliasAs("name")] string serviceType);
+		Task<ResponseModel<ServiceResolutionResult, ResolvedServiceEndpointResponseCode>> DiscoverServicesAsync([AliasAs("name")] string serviceType, CancellationToken token = default);
 	}
 }
