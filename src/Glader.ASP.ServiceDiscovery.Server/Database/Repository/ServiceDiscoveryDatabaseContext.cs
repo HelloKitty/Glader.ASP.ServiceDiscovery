@@ -61,6 +61,10 @@ namespace Glader.ASP.ServiceDiscovery
 			//Owns an endpoint.
 			serviceEndpointEntity
 				.OwnsOne(e => e.Endpoint);
+
+			//Service key is now based on name and id, can have many linked services.
+			serviceEndpointEntity
+				.HasKey(model => new {model.ServiceId, model.Name});
 		}
 	}
 }
