@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Glader.ASP.ServiceDiscovery</RootNamespace>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <Authors>Andrew Blakely, Glader</Authors>
     <Product>Glader.ASP.ServiceDiscovery</Product>
     <Description>Glader.ASP.ServiceDiscovery is a basic library for Service Discovery. Provides a quality Refit HTTP client interface as well as Entity Framework Core Database, Repository and ASP Controller for doing simple Service Discovery.</Description>
