@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -62,6 +63,19 @@ namespace Glader.ASP.ServiceDiscovery
 		{
 			//TODO: Implement when not lazy
 			throw new NotImplementedException();
+		}
+
+		/// <inheritdoc />
+		public async Task<ServiceEndpointModel[]> RetrieveAllAsync(string key, CancellationToken token = default)
+		{
+			key = ServiceNameNormalizedBuilder
+				.Create(key)
+				.ToString();
+
+			//All services with the service type.
+			return await Context.ServiceEndpoints
+				.Where(e => e.Service.ServiceName == key)
+				.ToArrayAsync(token);
 		}
 	}
 }
