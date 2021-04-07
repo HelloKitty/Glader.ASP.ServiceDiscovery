@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Glader.ASP.ServiceDiscovery</RootNamespace>
-    <Version>0.0.4</Version>
+    <Version>0.0.7</Version>
     <Authors>Andrew Blakely, Glader</Authors>
     <Product>Glader.ASP.ServiceDiscovery</Product>
     <Description>Glader.ASP.ServiceDiscovery is a basic library for Service Discovery. Provides a quality Refit HTTP client interface as well as Entity Framework Core Database, Repository and ASP Controller for doing simple Service Discovery.</Description>
@@ -13,10 +13,14 @@
     <PackageTags>Glader ASP Service Discovery ServiceDiscovery</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Glader.Essentials.Models" Version="2.2.48" />
+    <PackageReference Include="Glader.Essentials.Common" Version="2.2.66" />
+    <PackageReference Include="Glader.Essentials.Models" Version="2.2.66" />
+    <PackageReference Include="Glader.Essentials.Refit" Version="2.2.66" />
+    <PackageReference Include="Nito.AsyncEx" Version="5.1.0" />
     <PackageReference Include="Refit" Version="5.2.4" />
   </ItemGroup>
 
