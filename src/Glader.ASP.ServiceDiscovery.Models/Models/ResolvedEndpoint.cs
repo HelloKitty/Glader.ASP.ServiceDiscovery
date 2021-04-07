@@ -47,6 +47,8 @@ namespace Glader.ASP.ServiceDiscovery
 
 		}
 
+		public static implicit operator Uri(ResolvedEndpoint endpoint) => new Uri($"{endpoint.Address}:{endpoint.Port}");
+
 		public override string ToString()
 		{
 			return $"Address: {Address} Port: {Port}";
