@@ -16,4 +16,13 @@
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.2.0" />
+    <PackageReference Include="Glader.Essentials.Refit" Version="2.2.66" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Glader.ASP.ServiceDiscovery.Client\Glader.ASP.ServiceDiscovery.Client.csproj" />
+  </ItemGroup>
+
 </Project>
