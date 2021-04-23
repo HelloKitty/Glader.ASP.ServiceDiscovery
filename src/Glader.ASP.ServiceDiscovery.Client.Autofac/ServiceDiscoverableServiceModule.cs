@@ -11,7 +11,7 @@ namespace Glader.ASP.ServiceDiscovery
 	/// </summary>
 	/// <typeparam name="TServiceType">The service type.</typeparam>
 	/// <typeparam name="TServiceEnumType">The service type enumeration.</typeparam>
-	public sealed class ServiceDiscoverableServiceModule<TServiceType, TServiceEnumType> : Module
+	public class ServiceDiscoverableServiceModule<TServiceType, TServiceEnumType> : Module
 		where TServiceType : class
 		where TServiceEnumType : Enum
 	{
