@@ -11,6 +11,13 @@ namespace Glader.ASP.ServiceDiscovery
 	public sealed class DefaultServiceTypeIdentifierConverter<TServiceTypeEnum> : IServiceTypeIdentifierConverter<TServiceTypeEnum> 
 		where TServiceTypeEnum : Enum
 	{
+		public static IServiceTypeIdentifierConverter<TServiceTypeEnum> Instance { get; } = new DefaultServiceTypeIdentifierConverter<TServiceTypeEnum>();
+
+		static DefaultServiceTypeIdentifierConverter()
+		{
+			
+		}
+
 		public string Create(TServiceTypeEnum context)
 		{
 			if (context == null) throw new ArgumentNullException(nameof(context));
