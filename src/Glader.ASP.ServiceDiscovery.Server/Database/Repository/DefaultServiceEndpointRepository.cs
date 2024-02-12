@@ -77,5 +77,29 @@ namespace Glader.ASP.ServiceDiscovery
 				.Where(e => e.Service.ServiceType == key)
 				.ToArrayAsync(token);
 		}
+
+		/// <inheritdoc />
+		public async Task<bool> ContainsAsync(string key, string groupName, CancellationToken token = default)
+		{
+			key = ServiceNameNormalizedBuilder
+				.Create(key)
+				.ToString();
+
+			return await Context
+				.ServiceEndpoints
+				.AnyAsync(e => e.Service.ServiceType == key && e.Name == groupName, token);
+		}
+
+		/// <inheritdoc />
+		public async Task<ServiceEndpointModel> RetrieveAsync(string key, string groupName, CancellationToken token = default)
+		{
+			key = ServiceNameNormalizedBuilder
+				.Create(key)
+				.ToString();
+
+			return await Context
+				.ServiceEndpoints
+				.FirstAsync(e => e.Service.ServiceType == key && e.Name == groupName, token);
+		}
 	}
 }
