@@ -85,6 +85,10 @@ namespace Glader.ASP.ServiceDiscovery
 				.Create(key)
 				.ToString();
 
+			groupName = ServiceNameNormalizedBuilder
+				.Create(groupName)
+				.ToString();
+
 			return await Context
 				.ServiceEndpoints
 				.AnyAsync(e => e.Service.ServiceType == key && e.Name == groupName, token);
@@ -95,6 +99,10 @@ namespace Glader.ASP.ServiceDiscovery
 		{
 			key = ServiceNameNormalizedBuilder
 				.Create(key)
+				.ToString();
+
+			groupName = ServiceNameNormalizedBuilder
+				.Create(groupName)
 				.ToString();
 
 			return await Context
