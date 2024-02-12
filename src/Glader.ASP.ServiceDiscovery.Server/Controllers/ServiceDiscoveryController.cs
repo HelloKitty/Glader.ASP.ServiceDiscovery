@@ -66,7 +66,7 @@ namespace Glader.ASP.ServiceDiscovery
 		}
 
 		[ProducesJson]
-		[HttpGet("{name}")]
+		[HttpGet("{name}/All")]
 		public async Task<ResponseModel<ServiceResolutionResult, ResolvedServiceEndpointResponseCode>> DiscoverServicesAsync([FromRoute(Name = "name")] string serviceType, CancellationToken token = default)
 		{
 			if(LoggingService.IsEnabled(LogLevel.Debug))
