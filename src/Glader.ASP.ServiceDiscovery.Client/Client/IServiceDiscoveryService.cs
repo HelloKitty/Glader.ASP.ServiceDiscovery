@@ -22,8 +22,8 @@ namespace Glader.ASP.ServiceDiscovery
 		/// <param name="serviceType">The type of the service.</param>
 		/// <param name="token"></param>
 		/// <returns>The result of the resolve request.</returns>
-		[Get("/api/ServiceDiscovery/{name}/Single")]
-		Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync([AliasAs("name")] string serviceType, string groupName, CancellationToken token = default);
+		[Get("/api/ServiceDiscovery/{name}/Single/{group}")]
+		Task<ResponseModel<ResolvedEndpoint, ResolvedServiceEndpointResponseCode>> DiscoverServiceAsync([AliasAs("name")] string serviceType, [AliasAs("group")] string groupName, CancellationToken token = default);
 
 		/// <summary>
 		/// Attempts to discover a service with the provided <see cref="serviceType"/>
