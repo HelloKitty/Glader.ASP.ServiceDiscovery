@@ -17,11 +17,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Glader.Essentials.Common" Version="2.6.153" />
-    <PackageReference Include="Glader.Essentials.Models" Version="2.6.153" />
-    <PackageReference Include="Glader.Essentials.Refit" Version="2.6.153" />
+    <PackageReference Include="Glader.Essentials.Common" Version="2.6.154" />
+    <PackageReference Include="Glader.Essentials.Models" Version="2.6.154" />
+    <PackageReference Include="Glader.Essentials.Refit" Version="2.6.154" />
     <PackageReference Include="Nito.AsyncEx" Version="5.1.0" />
     <PackageReference Include="Refit" Version="7.0.0" />
+    <PackageReference Include="Refit.Newtonsoft.Json" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -94,7 +94,11 @@ namespace Glader.ASP.ServiceDiscovery
 			if(endpoint == null) throw new ArgumentNullException(nameof(endpoint));
 
 			TServiceType service = RestService
-				.For<TServiceType>(UrlFactory.Create(endpoint), new RefitSettings() { HttpMessageHandlerFactory = BuildHttpClientHandler });
+				.For<TServiceType>(UrlFactory.Create(endpoint), new RefitSettings()
+				{
+					ContentSerializer = new NewtonsoftJsonContentSerializer(),
+					HttpMessageHandlerFactory = BuildHttpClientHandler
+				});
 
 			return new ServiceResolveResult<TServiceType>(service);
 		}
