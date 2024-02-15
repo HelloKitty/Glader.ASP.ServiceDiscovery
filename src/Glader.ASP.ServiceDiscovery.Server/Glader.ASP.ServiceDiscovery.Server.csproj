@@ -16,9 +16,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Glader.Essentials.ASP" Version="2.6.153" />
-    <PackageReference Include="Glader.Essentials.Database" Version="2.6.153" />
-    <PackageReference Include="Glader.Essentials.Models" Version="2.6.153" />
+    <PackageReference Include="Glader.Essentials.ASP" Version="2.6.154" />
+    <PackageReference Include="Glader.Essentials.Database" Version="2.6.154" />
+    <PackageReference Include="Glader.Essentials.Models" Version="2.6.154" />
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.0" />

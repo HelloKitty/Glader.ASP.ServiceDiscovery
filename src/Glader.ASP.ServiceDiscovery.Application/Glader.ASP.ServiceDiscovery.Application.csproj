@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Glader.Essentials.Models" Version="2.6.153" />
+    <PackageReference Include="Glader.Essentials.Models" Version="2.6.154" />
     <PackageReference Include="Microsoft.AspNetCore.ResponseCaching" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.1" />
