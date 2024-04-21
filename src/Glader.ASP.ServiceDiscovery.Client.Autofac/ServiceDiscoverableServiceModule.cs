@@ -42,6 +42,13 @@ namespace Glader.ASP.ServiceDiscovery
 		public object Key { get; init; } = null;
 
 		/// <summary>
+		/// Represents the service group name
+		/// (Such as: DEFAULT, LOCAL)
+		/// Default value: ServiceDiscoveryConstants.DEFAULT_GROUP_NAME
+		/// </summary>
+		public string GroupName { get; init; } = ServiceDiscoveryConstants.DEFAULT_GROUP_NAME;
+
+		/// <summary>
 		/// Service that converts the service-type enum to the service name string.
 		/// Default: <see cref="DefaultServiceTypeIdentifierConverter{TServiceTypeEnum}"/>
 		/// </summary>
@@ -67,7 +74,8 @@ namespace Glader.ASP.ServiceDiscovery
 					return new AuthorizedServiceDiscoveryServiceResolver<TServiceType, TServiceEnumType>(context.Resolve<IServiceDiscoveryService>(), ServiceType, context.Resolve<IReadonlyAuthTokenRepository>())
 					{
 						ServiceNameConverter = ServiceNameConverter,
-						UrlFactory = UrlFactory
+						UrlFactory = UrlFactory,
+						GroupName = GroupName,
 					};
 				})
 					.As<IServiceResolver<TServiceType>>();
@@ -84,7 +92,8 @@ namespace Glader.ASP.ServiceDiscovery
 					return new DefaultServiceDiscoveryServiceResolver<TServiceType, TServiceEnumType>(context.Resolve<IServiceDiscoveryService>(), ServiceType)
 					{
 						ServiceNameConverter = ServiceNameConverter,
-						UrlFactory = UrlFactory
+						UrlFactory = UrlFactory,
+						GroupName = GroupName,
 					};
 				})
 					.As<IServiceResolver<TServiceType>>();

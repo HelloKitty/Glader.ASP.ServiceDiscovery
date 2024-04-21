@@ -38,6 +38,13 @@ namespace Glader.ASP.ServiceDiscovery
 
 		public IServiceBaseUrlFactory UrlFactory { get; init; } = new DefaultServiceBaseUrlFactory();
 
+		/// <summary>
+		/// Represents the service group name
+		/// (Such as: DEFAULT, LOCAL)
+		/// Default value: ServiceDiscoveryConstants.DEFAULT_GROUP_NAME
+		/// </summary>
+		public string GroupName { get; init; } = ServiceDiscoveryConstants.DEFAULT_GROUP_NAME;
+
 		public DefaultServiceDiscoveryServiceResolver(IServiceDiscoveryService discoveryClient,
 			TServiceEnumType serviceType)
 		{
@@ -68,7 +75,7 @@ namespace Glader.ASP.ServiceDiscovery
 				string name = ServiceNameConverter.Create(ServiceType);
 				try
 				{
-					var discoveryResponse = await DiscoveryClient.DiscoverServiceAsync(name, token);
+					var discoveryResponse = await DiscoveryClient.DiscoverServiceAsync(name, GroupName, token);
 
 					//Failed to discover the service endpoint so service
 					//is unavailable, return existing unavailable model.
