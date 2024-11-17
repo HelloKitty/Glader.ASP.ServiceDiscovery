@@ -15,6 +15,7 @@ namespace Glader.ASP.ServiceDiscovery
 		/// <summary>
 		/// Represents the sub-name of the service.
 		/// (Ex. Service: GAMESERVER SubName: DerpServer2)
+		/// (GroupName)
 		/// </summary>
 		[JsonProperty]
 		public string Name { get; private set; }

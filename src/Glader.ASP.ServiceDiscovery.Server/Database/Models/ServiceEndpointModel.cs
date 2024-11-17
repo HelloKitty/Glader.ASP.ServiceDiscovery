@@ -19,6 +19,7 @@ namespace Glader.ASP.ServiceDiscovery
 		/// <summary>
 		/// Represents the name of the endpoint.
 		/// (Different from service type).
+		/// (GroupName)
 		/// </summary>
 		[Required]
 		public string Name { get; internal set; }
