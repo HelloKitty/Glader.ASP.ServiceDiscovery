@@ -45,5 +45,15 @@ namespace Glader.ASP.ServiceDiscovery
 		/// <returns>The result a result of all services resolved.</returns>
 		[Get("/api/ServiceDiscovery/{name}/All")]
 		Task<ResponseModel<ServiceResolutionResult, ResolvedServiceEndpointResponseCode>> DiscoverServicesAsync([AliasAs("name")] string serviceType, CancellationToken token = default);
+
+		/// <summary>
+		/// Attempts to discover all services for the provided <see cref="groupName"/>.
+		/// model.
+		/// </summary>
+		/// <param name="groupName">Represents the group name that the services are grouped by. (Ex. Default, Local, Game1, Game2)</param>
+		/// <param name="token"></param>
+		/// <returns>The result of all services in the <see cref="groupName"/> Group resolved.</returns>
+		[Get("/api/ServiceDiscovery/Group/{groupName}/All")]
+		Task<ResponseModel<Dictionary<string, ResolvedEndpoint>, ResolvedServiceEndpointResponseCode>> DiscoverGroupServicesAsync([AliasAs("groupName")] string groupName, CancellationToken token = default);
 	}
 }

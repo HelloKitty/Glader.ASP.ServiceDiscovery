@@ -113,5 +113,44 @@ namespace Glader.ASP.ServiceDiscovery
 
 			return Success<ServiceResolutionResult, ResolvedServiceEndpointResponseCode>(new ServiceResolutionResult(endpoints));
 		}
+
+		// [Get("/api/ServiceDiscovery/Group/{groupName}/All")]
+		[ProducesJson]
+		[HttpGet("Group/{groupName}/All")]
+		public async Task<ResponseModel<Dictionary<string, ResolvedEndpoint>, ResolvedServiceEndpointResponseCode>> 
+			DiscoverGroupServicesAsync([FromRoute(Name = "groupName")] string groupName, CancellationToken token = default)
+		{
+			if(LoggingService.IsEnabled(LogLevel.Debug))
+				LoggingService.LogDebug($"Full Service Discover request for GroupName: {groupName}");
+
+			if (!ModelState.IsValid)
+			{
+				if(LoggingService.IsEnabled(LogLevel.Debug))
+					LoggingService.LogDebug($"Full GroupName resolution request was sent with an invalid model ModelState.");
+
+				return Failure<Dictionary<string, ResolvedEndpoint>, ResolvedServiceEndpointResponseCode>(ResolvedServiceEndpointResponseCode.GeneralRequestError);
+			}
+
+			//We need to check if we know about the locale
+			//If we don't we should indicate it is unlisted
+			//We also need to check if the keypair region and servicetype exist
+			//TODO: Deployment mode handling, right now it's set to INTERNAL
+			if (!await EndpointRepository.ContainsGroupAsync(groupName, token))
+			{
+				if(LoggingService.IsEnabled(LogLevel.Debug))
+					LoggingService.LogDebug($"Client requested unlisted GroupName: {groupName}.");
+
+				return Failure<Dictionary<string, ResolvedEndpoint>, ResolvedServiceEndpointResponseCode>(ResolvedServiceEndpointResponseCode.GroupNameServiceUnlisted);
+			}
+
+			ServiceEndpointModel[] entries = await EndpointRepository
+				.RetrieveAllGroupedAsync(groupName, token);
+
+			//Assume no failure
+			var endpoints = entries
+				.ToDictionary(model => model.Service.ServiceType, model => model.Endpoint);
+
+			return Success<Dictionary<string, ResolvedEndpoint>, ResolvedServiceEndpointResponseCode>(endpoints);
+		}
 	}
 }
