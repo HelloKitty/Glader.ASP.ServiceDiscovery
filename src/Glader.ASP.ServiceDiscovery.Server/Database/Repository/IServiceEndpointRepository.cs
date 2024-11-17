@@ -34,5 +34,13 @@ namespace Glader.ASP.ServiceDiscovery
 		/// <param name="token">The cancel token.</param>
 		/// <returns>Service endpoint.</returns>
 		Task<ServiceEndpointModel> RetrieveAsync(string key, string groupName, CancellationToken token = default);
+
+		/// <summary>
+		/// Checks if a group name even exists in the service listings.
+		/// </summary>
+		/// <param name="groupName">The group name.</param>
+		/// <param name="token">Cancel token.</param>
+		/// <returns>True if an entry with the provided groupName exists.</returns>
+		Task<bool> ContainsGroupAsync(string groupName, CancellationToken token = default);
 	}
 }
