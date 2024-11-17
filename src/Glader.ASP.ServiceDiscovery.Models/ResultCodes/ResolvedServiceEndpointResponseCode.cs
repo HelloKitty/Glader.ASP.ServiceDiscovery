@@ -27,6 +27,11 @@ namespace Glader.ASP.ServiceDiscovery
 		/// <summary>
 		/// Indicates that a general error has occured with the request.
 		/// </summary>
-		GeneralRequestError = 4
+		GeneralRequestError = 4,
+
+		/// <summary>
+		/// Indicates that a group name for services requested doesn't exist.
+		/// </summary>
+		GroupNameServiceUnlisted = 5,
 	}
 }
