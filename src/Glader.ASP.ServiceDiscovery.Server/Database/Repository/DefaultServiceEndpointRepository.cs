@@ -121,5 +121,19 @@ namespace Glader.ASP.ServiceDiscovery
 				.ServiceEndpoints
 				.AnyAsync(e => e.Name == groupName, token);
 		}
+
+		/// <inheritdoc />
+		public async Task<ServiceEndpointModel[]> RetrieveAllGroupedAsync(string groupName, CancellationToken token = default)
+		{
+			groupName = ServiceNameNormalizedBuilder
+				.Create(groupName)
+				.ToString();
+
+			return await Context
+				.ServiceEndpoints
+				.Where(e => e.Name == groupName)
+				.Include(e => e.Service)
+				.ToArrayAsync(token);
+		}
 	}
 }
