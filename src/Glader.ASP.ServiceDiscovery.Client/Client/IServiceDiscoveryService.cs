@@ -20,6 +20,7 @@ namespace Glader.ASP.ServiceDiscovery
 		/// model.
 		/// </summary>
 		/// <param name="serviceType">The type of the service.</param>
+		/// <param name="groupName">Represents the group name that the services are grouped by. (Ex. Default, Local, Game1, Game2)</param>
 		/// <param name="token"></param>
 		/// <returns>The result of the resolve request.</returns>
 		[Get("/api/ServiceDiscovery/{name}/Single/{group}")]
